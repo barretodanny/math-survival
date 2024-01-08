@@ -1,5 +1,5 @@
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { closeModal, selectUIModal } from "../../features/ui/uiSlice"
+import { useAppDispatch } from "../../app/hooks"
+import { closeModal } from "../../features/ui/uiSlice"
 
 import styles from "./Modal.module.css"
 
@@ -8,7 +8,6 @@ interface ModalProps {
 }
 
 function Modal({ children }: ModalProps) {
-  const modal = useAppSelector(selectUIModal)
   const dispatch = useAppDispatch()
 
   function handleCloseModal() {
