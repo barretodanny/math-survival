@@ -1,5 +1,5 @@
 import { useAppDispatch } from "../../app/hooks"
-import { showSetupScreen } from "../../features/ui/uiSlice"
+import { showSetupScreen } from "../../features/ui/ui-slice"
 
 function PostGame() {
   const dispatch = useAppDispatch()

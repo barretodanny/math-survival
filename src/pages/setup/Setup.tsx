@@ -5,7 +5,7 @@ import {
   showCountdownScreen,
   showScoresModal,
   showSettingsModal,
-} from "../../features/ui/uiSlice"
+} from "../../features/ui/ui-slice"
 
 import ScoresModal from "../../components/Modal/ScoresModal"
 import SettingsModal from "../../components/Modal/SettingsModal"

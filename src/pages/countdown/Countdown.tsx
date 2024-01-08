@@ -1,5 +1,5 @@
 import { useAppDispatch } from "../../app/hooks"
-import { showGameScreen } from "../../features/ui/uiSlice"
+import { showGameScreen } from "../../features/ui/ui-slice"
 
 function Countdown() {
   const dispatch = useAppDispatch()

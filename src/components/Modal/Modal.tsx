@@ -1,5 +1,5 @@
 import { useAppDispatch } from "../../app/hooks"
-import { closeModal } from "../../features/ui/uiSlice"
+import { closeModal } from "../../features/ui/ui-slice"
 
 import styles from "./Modal.module.css"
 
