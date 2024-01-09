@@ -1,17 +1,17 @@
-import { useAppDispatch } from "../../app/hooks"
-import { closeModal } from "../../features/ui/ui-slice"
+import { useAppDispatch } from "../../app/hooks";
+import { closeModal } from "../../features/ui/ui-slice";
 
-import styles from "./Modal.module.css"
+import styles from "./Modal.module.css";
 
 interface ModalProps {
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
 function Modal({ children }: ModalProps) {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   function handleCloseModal() {
-    dispatch(closeModal())
+    dispatch(closeModal());
   }
 
   return (
@@ -26,7 +26,7 @@ function Modal({ children }: ModalProps) {
         </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default Modal
+export default Modal;

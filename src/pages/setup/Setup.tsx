@@ -1,11 +1,11 @@
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { UIModalState } from "../../constants/ui"
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { UIModalState } from "../../constants/ui";
 import {
   selectUIModal,
   showCountdownScreen,
   showScoresModal,
   showSettingsModal,
-} from "../../features/ui/ui-slice"
+} from "../../features/ui/ui-slice";
 import {
   selectDifficultyOption,
   selectMathModeOption,
@@ -15,16 +15,16 @@ import {
   setMathModeToAddition,
   setMathModeToMultiplication,
   setMathModeToSubtraction,
-} from "../../features/options/options-slice"
+} from "../../features/options/options-slice";
 
-import ScoresModal from "../../components/Modal/ScoresModal"
-import SettingsModal from "../../components/Modal/SettingsModal"
+import ScoresModal from "../../components/Modal/ScoresModal";
+import SettingsModal from "../../components/Modal/SettingsModal";
 
 function Setup() {
-  const modal = useAppSelector(selectUIModal)
-  const mathMode = useAppSelector(selectMathModeOption)
-  const difficulty = useAppSelector(selectDifficultyOption)
-  const dispatch = useAppDispatch()
+  const modal = useAppSelector(selectUIModal);
+  const mathMode = useAppSelector(selectMathModeOption);
+  const difficulty = useAppSelector(selectDifficultyOption);
+  const dispatch = useAppDispatch();
 
   return (
     <div>
@@ -63,7 +63,7 @@ function Setup() {
       <br />
       <button onClick={() => dispatch(showCountdownScreen())}>Start</button>
     </div>
-  )
+  );
 }
 
-export default Setup
+export default Setup;

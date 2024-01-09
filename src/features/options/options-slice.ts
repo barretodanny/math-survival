@@ -1,41 +1,41 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { RootState } from "../../app/store"
-import { MathModeOptions, DifficultyOptions } from "../../constants/options"
+import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../../app/store";
+import { MathModeOptions, DifficultyOptions } from "../../constants/options";
 
 export interface OptionsState {
-  mathMode: MathModeOptions
-  difficulty: DifficultyOptions
+  mathMode: MathModeOptions;
+  difficulty: DifficultyOptions;
 }
 
 const initialState: OptionsState = {
   mathMode: MathModeOptions.MULTIPLICATION,
   difficulty: DifficultyOptions.NORMAL,
-}
+};
 
 export const optionsSlice = createSlice({
   name: "options",
   initialState,
   reducers: {
     setMathModeToAddition: (state) => {
-      state.mathMode = MathModeOptions.ADDITION
+      state.mathMode = MathModeOptions.ADDITION;
     },
     setMathModeToSubtraction: (state) => {
-      state.mathMode = MathModeOptions.SUBTRACTION
+      state.mathMode = MathModeOptions.SUBTRACTION;
     },
     setMathModeToMultiplication: (state) => {
-      state.mathMode = MathModeOptions.MULTIPLICATION
+      state.mathMode = MathModeOptions.MULTIPLICATION;
     },
     setDifficultyToEasy: (state) => {
-      state.difficulty = DifficultyOptions.EASY
+      state.difficulty = DifficultyOptions.EASY;
     },
     setDifficultyToNormal: (state) => {
-      state.difficulty = DifficultyOptions.NORMAL
+      state.difficulty = DifficultyOptions.NORMAL;
     },
     setDifficultyToHard: (state) => {
-      state.difficulty = DifficultyOptions.HARD
+      state.difficulty = DifficultyOptions.HARD;
     },
   },
-})
+});
 
 export const {
   setMathModeToAddition,
@@ -44,10 +44,11 @@ export const {
   setDifficultyToEasy,
   setDifficultyToNormal,
   setDifficultyToHard,
-} = optionsSlice.actions
+} = optionsSlice.actions;
 
-export const selectMathModeOption = (state: RootState) => state.options.mathMode
+export const selectMathModeOption = (state: RootState) =>
+  state.options.mathMode;
 export const selectDifficultyOption = (state: RootState) =>
-  state.options.difficulty
+  state.options.difficulty;
 
-export default optionsSlice.reducer
+export default optionsSlice.reducer;

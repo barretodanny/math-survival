@@ -1,8 +1,11 @@
-import { useAppDispatch } from "../../app/hooks"
-import { showPostGameScreen, showSetupScreen } from "../../features/ui/ui-slice"
+import { useAppDispatch } from "../../app/hooks";
+import {
+  showPostGameScreen,
+  showSetupScreen,
+} from "../../features/ui/ui-slice";
 
 function Game() {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   return (
     <div>
@@ -11,7 +14,7 @@ function Game() {
       <br />
       <button onClick={() => dispatch(showPostGameScreen())}>Next</button>
     </div>
-  )
+  );
 }
 
-export default Game
+export default Game;

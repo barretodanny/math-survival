@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import {
   decrementCountdownTimer,
   incrementCountdownTimer,
@@ -9,15 +9,15 @@ import {
   setDefaultUsername,
   toggleAutoSave,
   toggleDarkMode,
-} from "../../features/settings/settings-slice"
-import Modal from "./Modal"
+} from "../../features/settings/settings-slice";
+import Modal from "./Modal";
 
 function SettingsModal() {
-  const dispatch = useAppDispatch()
-  const darkMode = useAppSelector(selectDarkModeSetting)
-  const defaultUsername = useAppSelector(selectDefaultUsername)
-  const autoSave = useAppSelector(selectAutoSaveSetting)
-  const countdownTimer = useAppSelector(selectCountdownTimer)
+  const dispatch = useAppDispatch();
+  const darkMode = useAppSelector(selectDarkModeSetting);
+  const defaultUsername = useAppSelector(selectDefaultUsername);
+  const autoSave = useAppSelector(selectAutoSaveSetting);
+  const countdownTimer = useAppSelector(selectCountdownTimer);
 
   return (
     <Modal>
@@ -51,7 +51,7 @@ function SettingsModal() {
         </span>
       </div>
     </Modal>
-  )
+  );
 }
 
-export default SettingsModal
+export default SettingsModal;
