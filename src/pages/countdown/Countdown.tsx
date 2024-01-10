@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { selectCountdownTimer } from "../../features/settings/settings-slice";
 import { showGameScreen } from "../../features/ui/ui-slice";
+import { reset } from "../../features/game/game-slice";
 
 function Countdown() {
   const dispatch = useAppDispatch();
@@ -9,18 +10,23 @@ function Countdown() {
   const [timer, setTimer] = useState(countdownTimer);
 
   useEffect(() => {
+    // reset game state
+    dispatch(reset());
+
     const itv = setInterval(() => {
       setTimer((prev) => prev - 1);
-
-      // dispatched after 'GO!' is displayed
-      if (timer <= 0) {
-        dispatch(showGameScreen());
-      }
     }, 1000);
 
     return () => {
       clearInterval(itv);
     };
+  }, []);
+
+  useEffect(() => {
+    // dispatched after 'GO!' is displayed
+    if (timer < 0) {
+      dispatch(showGameScreen());
+    }
   }, [timer]);
 
   return (
