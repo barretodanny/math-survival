@@ -15,7 +15,7 @@ import {
   setMathModeToAddition,
   setMathModeToMultiplication,
   setMathModeToSubtraction,
-} from "../../features/options/options-slice";
+} from "../../features/game/game-slice";
 
 import ScoresModal from "../../components/Modal/ScoresModal";
 import SettingsModal from "../../components/Modal/SettingsModal";
