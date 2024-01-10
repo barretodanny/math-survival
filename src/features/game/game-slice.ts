@@ -8,7 +8,7 @@ import {
   INITIAL_MIN,
 } from "../../constants/game";
 import { QuestionType } from "../../types/game";
-import { generateQuestion } from "../../utils/game";
+import { generateQuestion, shouldIncrementMinMax } from "../../utils/game";
 
 export interface GameState {
   mathMode: MathModeOptions;
@@ -84,7 +84,12 @@ export const gameSlice = createSlice({
         state.score += 1;
         state.gameTimer += 1;
         state.userAnswer = undefined;
-        // determine is min/max should increment
+
+        if (shouldIncrementMinMax(state.difficulty, state.score)) {
+          state.min += 1;
+          state.max += 1;
+        }
+
         state.previousQuestion = state.currentQuestion;
         state.currentQuestion = state.nextQuestions![0];
         state.nextQuestions = [

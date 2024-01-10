@@ -1,4 +1,10 @@
-import { MathModeOptions } from "../constants/game";
+import {
+  DifficultyOptions,
+  EASY_INCREMENT_INTERVAL,
+  HARD_INCREMENT_INTERVAL,
+  MathModeOptions,
+  NORMAL_INCREMENT_INTERVAL,
+} from "../constants/game";
 
 function getRandomInt(min: number, max: number) {
   min = Math.ceil(min);
@@ -40,4 +46,18 @@ export function generateQuestion(
   const sign = getSign(mm);
   const answer = getAnswer(n1, n2, mm);
   return { n1, n2, sign, answer };
+}
+
+export function shouldIncrementMinMax(
+  difficulty: DifficultyOptions,
+  score: number
+) {
+  switch (difficulty) {
+    case DifficultyOptions.EASY:
+      return score % EASY_INCREMENT_INTERVAL === 0;
+    case DifficultyOptions.NORMAL:
+      return score % NORMAL_INCREMENT_INTERVAL === 0;
+    case DifficultyOptions.HARD:
+      return score % HARD_INCREMENT_INTERVAL === 0;
+  }
 }
