@@ -67,6 +67,7 @@ function Game() {
           type="text"
           value={userAnswer ? userAnswer : ""}
           onChange={(e) => dispatch(updateUserAnswer(e.target.value))}
+          autoFocus
         />
       </div>
       <div>
