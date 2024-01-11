@@ -1,4 +1,5 @@
 import { DifficultyOptions, MathModeOptions } from "../constants/game";
+import { Score } from "../types/scores";
 
 export function generateGameString(
   mathMode: MathModeOptions,
@@ -31,4 +32,32 @@ export function generateGameString(
   }
 
   return gameString;
+}
+
+export function parseScores(scoresString: string): Score[] {
+  if (!scoresString) {
+    return [];
+  }
+
+  if (!scoresString.includes(",")) {
+    const s = scoresString.split("_");
+    const score: Score = {
+      username: s[0],
+      score: parseInt(s[1]),
+      date: s[2],
+    };
+    return [score];
+  } else {
+    const scores: Score[] = [];
+    scoresString.split(",").map((ss) => {
+      const s = ss.split("_");
+      const score: Score = {
+        username: s[0],
+        score: parseInt(s[1]),
+        date: s[2],
+      };
+      scores.push(score);
+    });
+    return scores;
+  }
 }
