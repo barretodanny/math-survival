@@ -9,4 +9,5 @@ export enum UIModalState {
   NONE = "NONE",
   SETTINGS = "SETTINGS",
   SCORES = "SCORES",
+  HOW_TO_PLAY = "HOW_TO_PLAY",
 }

@@ -3,6 +3,7 @@ import { UIModalState } from "../../constants/ui";
 import {
   selectUIModal,
   showCountdownScreen,
+  showHowToPlayModal,
   showScoresModal,
   showSettingsModal,
 } from "../../features/ui/ui-slice";
@@ -19,6 +20,7 @@ import {
 
 import ScoresModal from "../../components/Modal/ScoresModal";
 import SettingsModal from "../../components/Modal/SettingsModal";
+import HowToPlayModal from "../../components/Modal/HowToPlayModal";
 
 function Setup() {
   const modal = useAppSelector(selectUIModal);
@@ -30,6 +32,7 @@ function Setup() {
     <div>
       {modal === UIModalState.SCORES && <ScoresModal />}
       {modal === UIModalState.SETTINGS && <SettingsModal />}
+      {modal === UIModalState.HOW_TO_PLAY && <HowToPlayModal />}
       <h2>Setup</h2>
       <p>MathMode: {mathMode}</p>
       <p>Difficulty: {difficulty}</p>
@@ -56,6 +59,10 @@ function Setup() {
       </div>
       <br />
       <br />
+      <br />
+      <button onClick={() => dispatch(showHowToPlayModal())}>
+        How To Play
+      </button>
       <br />
       <button onClick={() => dispatch(showSettingsModal())}>Settings</button>
       <br />

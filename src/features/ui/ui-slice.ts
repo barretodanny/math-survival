@@ -28,6 +28,9 @@ export const uiSlice = createSlice({
     showPostGameScreen: (state) => {
       state.screen = UIScreenState.POST_GAME;
     },
+    showHowToPlayModal: (state) => {
+      state.modal = UIModalState.HOW_TO_PLAY;
+    },
     showSettingsModal: (state) => {
       state.modal = UIModalState.SETTINGS;
     },
@@ -45,6 +48,7 @@ export const {
   showCountdownScreen,
   showGameScreen,
   showPostGameScreen,
+  showHowToPlayModal,
   showSettingsModal,
   showScoresModal,
   closeModal,
