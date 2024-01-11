@@ -1,19 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { selectGameScore } from "../../features/game/game-slice";
+import {
+  selectDifficultyOption,
+  selectGameScore,
+  selectMathModeOption,
+} from "../../features/game/game-slice";
 import {
   selectAutoSaveSetting,
   selectDefaultUsername,
 } from "../../features/settings/settings-slice";
 import { showSetupScreen } from "../../features/ui/ui-slice";
+import { generateGameString } from "../../utils/scores";
 
 function PostGame() {
   const dispatch = useAppDispatch();
+  const difficulty = useAppSelector(selectDifficultyOption);
+  const mathMode = useAppSelector(selectMathModeOption);
   const score = useAppSelector(selectGameScore);
   const autoSave = useAppSelector(selectAutoSaveSetting);
   const defaultUsername = useAppSelector(selectDefaultUsername);
   const [username, setUsername] = useState(defaultUsername);
   const [saved, setSaved] = useState(false);
+
+  function saveScore() {
+    const gameString = generateGameString(mathMode, difficulty);
+    const date = new Date().toISOString();
+    const scoreString = `${username}_${score}_${date}`;
+    const savedScores = localStorage.getItem(gameString);
+
+    savedScores
+      ? localStorage.setItem(gameString, `${savedScores},${scoreString}`)
+      : localStorage.setItem(gameString, `${scoreString}`);
+
+    setSaved(true);
+  }
+
+  useEffect(() => {
+    if (autoSave) {
+      saveScore();
+    }
+  }, [autoSave]);
 
   return (
     <div>
@@ -43,16 +69,7 @@ function PostGame() {
                 onChange={(e) => setUsername(e.target.value)}
               />
               <br />
-              <button
-                onClick={() => {
-                  console.log(
-                    `Saving score of ${score} under username ${username}`
-                  );
-                  setSaved(true);
-                }}
-              >
-                Save
-              </button>
+              <button onClick={saveScore}>Save</button>
             </>
           )}
         </>
