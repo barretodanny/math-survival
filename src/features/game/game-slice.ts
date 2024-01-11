@@ -4,8 +4,12 @@ import {
   DifficultyOptions,
   MathModeOptions,
   INITIAL_GAME_TIMER,
-  INITIAL_MAX,
-  INITIAL_MIN,
+  INITIAL_MULTIPLICATION_MIN,
+  INITIAL_MULTIPLICATION_MAX,
+  INITIAL_ADDITION_MIN,
+  INITIAL_SUBTRACTION_MIN,
+  INITIAL_ADDITION_MAX,
+  INITIAL_SUBTRACTION_MAX,
 } from "../../constants/game";
 import { QuestionType } from "../../types/game";
 import { generateQuestion, shouldIncrementMinMax } from "../../utils/game";
@@ -28,8 +32,8 @@ const initialState: GameState = {
   difficulty: DifficultyOptions.NORMAL,
   gameTimer: INITIAL_GAME_TIMER,
   score: 0,
-  min: INITIAL_MIN,
-  max: INITIAL_MAX,
+  min: INITIAL_MULTIPLICATION_MIN,
+  max: INITIAL_MULTIPLICATION_MAX,
   previousQuestion: undefined,
   currentQuestion: undefined,
   nextQuestions: undefined,
@@ -43,18 +47,28 @@ export const gameSlice = createSlice({
     reset: (state) => {
       (state.gameTimer = INITIAL_GAME_TIMER),
         (state.score = 0),
-        (state.min = INITIAL_MIN),
-        (state.max = INITIAL_MAX),
+        (state.min =
+          state.mathMode === MathModeOptions.ADDITION
+            ? INITIAL_ADDITION_MIN
+            : state.mathMode === MathModeOptions.SUBTRACTION
+            ? INITIAL_SUBTRACTION_MIN
+            : INITIAL_MULTIPLICATION_MIN),
+        (state.max =
+          state.mathMode === MathModeOptions.ADDITION
+            ? INITIAL_ADDITION_MAX
+            : state.mathMode === MathModeOptions.SUBTRACTION
+            ? INITIAL_SUBTRACTION_MAX
+            : INITIAL_MULTIPLICATION_MAX),
         (state.previousQuestion = undefined),
         (state.currentQuestion = generateQuestion(
           state.mathMode,
-          INITIAL_MIN,
-          INITIAL_MAX
+          state.min,
+          state.max
         )),
         (state.nextQuestions = [
-          generateQuestion(state.mathMode, INITIAL_MIN, INITIAL_MAX),
-          generateQuestion(state.mathMode, INITIAL_MIN, INITIAL_MAX),
-          generateQuestion(state.mathMode, INITIAL_MIN, INITIAL_MAX),
+          generateQuestion(state.mathMode, state.min, state.max),
+          generateQuestion(state.mathMode, state.min, state.max),
+          generateQuestion(state.mathMode, state.min, state.max),
         ]),
         (state.userAnswer = undefined);
     },
@@ -85,7 +99,9 @@ export const gameSlice = createSlice({
         state.gameTimer += 1;
         state.userAnswer = undefined;
 
-        if (shouldIncrementMinMax(state.difficulty, state.score)) {
+        if (
+          shouldIncrementMinMax(state.mathMode, state.difficulty, state.score)
+        ) {
           state.min += 1;
           state.max += 1;
         }

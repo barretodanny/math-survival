@@ -1,9 +1,15 @@
 import {
+  ADDITION_EASY_INCREMENT_INTERVAL,
+  ADDITION_HARD_INCREMENT_INTERVAL,
+  ADDITION_NORMAL_INCREMENT_INTERVAL,
   DifficultyOptions,
-  EASY_INCREMENT_INTERVAL,
-  HARD_INCREMENT_INTERVAL,
+  MULTIPLICATION_EASY_INCREMENT_INTERVAL,
+  MULTIPLICATION_HARD_INCREMENT_INTERVAL,
+  MULTIPLICATION_NORMAL_INCREMENT_INTERVAL,
   MathModeOptions,
-  NORMAL_INCREMENT_INTERVAL,
+  SUBTRACTION_EASY_INCREMENT_INTERVAL,
+  SUBTRACTION_HARD_INCREMENT_INTERVAL,
+  SUBTRACTION_NORMAL_INCREMENT_INTERVAL,
 } from "../constants/game";
 
 function getRandomInt(min: number, max: number) {
@@ -49,15 +55,38 @@ export function generateQuestion(
 }
 
 export function shouldIncrementMinMax(
+  mathMode: MathModeOptions,
   difficulty: DifficultyOptions,
   score: number
 ) {
-  switch (difficulty) {
-    case DifficultyOptions.EASY:
-      return score % EASY_INCREMENT_INTERVAL === 0;
-    case DifficultyOptions.NORMAL:
-      return score % NORMAL_INCREMENT_INTERVAL === 0;
-    case DifficultyOptions.HARD:
-      return score % HARD_INCREMENT_INTERVAL === 0;
+  switch (mathMode) {
+    case MathModeOptions.ADDITION:
+      switch (difficulty) {
+        case DifficultyOptions.EASY:
+          console.log("first");
+          return score % ADDITION_EASY_INCREMENT_INTERVAL === 0;
+        case DifficultyOptions.NORMAL:
+          return score % ADDITION_NORMAL_INCREMENT_INTERVAL === 0;
+        case DifficultyOptions.HARD:
+          return score % ADDITION_HARD_INCREMENT_INTERVAL === 0;
+      }
+    case MathModeOptions.SUBTRACTION:
+      switch (difficulty) {
+        case DifficultyOptions.EASY:
+          return score % SUBTRACTION_EASY_INCREMENT_INTERVAL === 0;
+        case DifficultyOptions.NORMAL:
+          return score % SUBTRACTION_NORMAL_INCREMENT_INTERVAL === 0;
+        case DifficultyOptions.HARD:
+          return score % SUBTRACTION_HARD_INCREMENT_INTERVAL === 0;
+      }
+    case MathModeOptions.MULTIPLICATION:
+      switch (difficulty) {
+        case DifficultyOptions.EASY:
+          return score % MULTIPLICATION_EASY_INCREMENT_INTERVAL === 0;
+        case DifficultyOptions.NORMAL:
+          return score % MULTIPLICATION_NORMAL_INCREMENT_INTERVAL === 0;
+        case DifficultyOptions.HARD:
+          return score % MULTIPLICATION_HARD_INCREMENT_INTERVAL === 0;
+      }
   }
 }
