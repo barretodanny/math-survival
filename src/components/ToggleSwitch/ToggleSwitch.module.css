@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 55px;
+  height: 22px;
+  padding: 4px;
+  border-radius: 22px;
+  background-color: rgb(197, 197, 197);
+  cursor: pointer;
+  border: 1px solid rgb(167, 167, 167);
+}
+
+.on {
+  background-color: rgb(108, 194, 248);
+}
+
+.on .ball {
+  transform: translateX(30px);
+}
+
+.ball {
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
