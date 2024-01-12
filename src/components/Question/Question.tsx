@@ -6,20 +6,15 @@ import styles from "./Question.module.css";
 
 interface QuestionProps {
   question: QuestionType | undefined;
-  previous?: boolean;
   current?: boolean;
   userAnswer?: string;
 }
 
-function Question({ question, previous, current, userAnswer }: QuestionProps) {
+function Question({ question, current, userAnswer }: QuestionProps) {
   const dispatch = useAppDispatch();
 
   return (
-    <div
-      className={`${styles.container} ${
-        current ? styles.current : previous ? styles.previous : styles.next
-      }`}
-    >
+    <div className={`${styles.container} ${current && styles.current}`}>
       <span className={styles.question}>
         {question?.n1} {question?.sign} {question?.n2}
       </span>

@@ -21,7 +21,6 @@ export interface GameState {
   score: number;
   min: number;
   max: number;
-  previousQuestion: QuestionType | undefined;
   currentQuestion: QuestionType | undefined;
   nextQuestions: [QuestionType, QuestionType, QuestionType] | undefined;
   userAnswer: string | undefined;
@@ -34,7 +33,6 @@ const initialState: GameState = {
   score: 0,
   min: INITIAL_MULTIPLICATION_MIN,
   max: INITIAL_MULTIPLICATION_MAX,
-  previousQuestion: undefined,
   currentQuestion: undefined,
   nextQuestions: undefined,
   userAnswer: undefined,
@@ -59,7 +57,6 @@ export const gameSlice = createSlice({
             : state.mathMode === MathModeOptions.SUBTRACTION
             ? INITIAL_SUBTRACTION_MAX
             : INITIAL_MULTIPLICATION_MAX),
-        (state.previousQuestion = undefined),
         (state.currentQuestion = generateQuestion(
           state.mathMode,
           state.min,
@@ -106,7 +103,6 @@ export const gameSlice = createSlice({
           state.max += 1;
         }
 
-        state.previousQuestion = state.currentQuestion;
         state.currentQuestion = state.nextQuestions![0];
         state.nextQuestions = [
           state.nextQuestions![1],
@@ -139,8 +135,6 @@ export const selectGameTimer = (state: RootState) => state.game.gameTimer;
 export const selectGameScore = (state: RootState) => state.game.score;
 export const selectGameMin = (state: RootState) => state.game.min;
 export const selectGameMax = (state: RootState) => state.game.max;
-export const selectGamePreviousQuestion = (state: RootState) =>
-  state.game.previousQuestion;
 export const selectGameCurrentQuestion = (state: RootState) =>
   state.game.currentQuestion;
 export const selectGameNextQuestions = (state: RootState) =>
