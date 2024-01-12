@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { selectCountdownTimer } from "../../features/settings/settings-slice";
+import {
+  selectCountdownTimer,
+  selectDarkModeSetting,
+} from "../../features/settings/settings-slice";
 import { showGameScreen } from "../../features/ui/ui-slice";
 import { reset } from "../../features/game/game-slice";
 
+import styles from "./Countdown.module.css";
+
 function Countdown() {
   const dispatch = useAppDispatch();
+  const darkMode = useAppSelector(selectDarkModeSetting);
   const countdownTimer = useAppSelector(selectCountdownTimer);
   const [timer, setTimer] = useState(countdownTimer);
 
@@ -30,10 +36,21 @@ function Countdown() {
   }, [timer]);
 
   return (
-    <div>
-      <h2>Countdown</h2>
-      <h4>{timer === 0 ? "GO!" : timer}</h4>
-      <button onClick={() => dispatch(showGameScreen())}>Next</button>
+    <div className={styles.container}>
+      <h3
+        className={`${styles.heading} ${
+          darkMode ? styles.textDark : styles.textLight
+        }`}
+      >
+        Starting in...
+      </h3>
+      <h3
+        className={`${styles.count} ${
+          darkMode ? styles.textDark : styles.textLight
+        }`}
+      >
+        {timer === 0 ? "GO!" : timer}
+      </h3>
     </div>
   );
 }
