@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #dedede;
+  border-bottom: 3px solid black;
+  padding: 18px 12px;
+}
+
+.quitBtn {
+  padding: 8px;
+  border-radius: 25px;
+  width: 60px;
+  border: 1px solid rgb(85, 77, 77);
+  background-color: lightcoral;
+  cursor: pointer;
+}
+
+.quitBtn:hover {
+  background-color: rgb(235, 91, 91);
+}
