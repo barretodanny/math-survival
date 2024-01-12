@@ -1,0 +1,179 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.sectionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+.bottom {
+  margin: 20px 0;
+}
+
+.heading {
+  margin: 5px 0;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.lightText {
+  color: black;
+}
+
+.darkText {
+  color: white;
+}
+
+.btn {
+  padding: 11px 8px;
+  width: 500px;
+  border-radius: 25px;
+  outline: none;
+  cursor: pointer;
+}
+
+.btnLight {
+  border: 1px solid rgb(134, 134, 228);
+  background-color: rgb(188, 216, 248);
+}
+
+.btnLight:hover {
+  border: 1px solid rgb(108, 108, 241);
+  background-color: rgb(130, 185, 248);
+}
+
+.btnDark {
+  color: white;
+  border: 1px solid rgb(120, 117, 128);
+  background-color: rgb(70, 99, 128);
+}
+
+.btnDark:hover {
+  border: 1px solid rgb(146, 140, 161);
+  background-color: rgb(81, 131, 180);
+}
+
+.selectedBtnLight {
+  color: white;
+  border: 1px solid rgb(33, 33, 133);
+  background-color: rgb(34, 84, 206);
+}
+
+.selectedBtnLight:hover {
+  border: 1px solid rgb(43, 63, 183);
+  background-color: rgb(34, 54, 186);
+}
+
+.selectedBtnDark {
+  color: white;
+  border: 1px solid rgb(18, 18, 146);
+  background-color: rgb(35, 152, 230);
+}
+
+.selectedBtnDark:hover {
+  border: 1px solid rgb(43, 63, 183);
+  background-color: rgb(74, 171, 235);
+}
+
+.selectedDifficulty {
+  background-color: lightgreen;
+}
+
+.HTPLight {
+  border: 1px solid rgb(145, 121, 76);
+  background-color: beige;
+}
+
+.HTPLight:hover {
+  background-color: bisque;
+}
+
+.HTPDark {
+  border: 1px solid rgb(145, 121, 76);
+  background-color: rgb(223, 223, 187);
+}
+
+.HTPDark:hover {
+  background-color: rgb(236, 236, 186);
+}
+
+.settingsLight {
+  color: white;
+  border: 1px solid rgb(34, 61, 66);
+  background-color: rgb(70, 154, 180);
+}
+
+.settingsLight:hover {
+  background-color: steelblue;
+}
+
+.settingsDark {
+  color: white;
+  border: 1px solid rgb(34, 61, 66);
+  background-color: steelblue;
+}
+
+.settingsDark:hover {
+  background-color: rgb(70, 154, 180);
+}
+
+.scoresLight {
+  color: white;
+  border: 1px solid rgb(56, 4, 104);
+  background-color: rgb(172, 4, 172);
+}
+
+.scoresLight:hover {
+  background-color: purple;
+}
+
+.scoresDark {
+  color: white;
+  border: 1px solid rgb(56, 4, 104);
+  background-color: purple;
+}
+
+.scoresDark:hover {
+  background-color: rgb(172, 4, 172);
+}
+
+.startLight {
+  color: white;
+  border: 1px solid rgb(3, 53, 7);
+  background-color: green;
+}
+
+.startLight:hover {
+  background-color: rgb(1, 95, 1);
+}
+
+.startDark {
+  color: white;
+  border: 1px solid rgb(3, 53, 7);
+  background-color: rgb(1, 95, 1);
+}
+
+.startDark:hover {
+  background-color: green;
+}
+
+@media only screen and (max-width: 700px) {
+  .heading {
+    font-size: 1.35em;
+  }
+
+  .btn {
+    max-width: 500px;
+    width: 90%;
+  }
+}
