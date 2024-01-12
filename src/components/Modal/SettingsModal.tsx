@@ -56,19 +56,19 @@ function SettingsModal() {
           <p>Countdown Timer</p>
 
           <button
-            className={`${styles.countdownBtn} ${styles.incrementBtn}`}
-            onClick={() => dispatch(incrementCountdownTimer())}
+            className={`${styles.countdownBtn} ${styles.decrementBtn}`}
+            onClick={() => dispatch(decrementCountdownTimer())}
           >
-            +
+            -
           </button>
           {"  "}
           {countdownTimer}
           {"  "}
           <button
-            className={`${styles.countdownBtn} ${styles.decrementBtn}`}
-            onClick={() => dispatch(decrementCountdownTimer())}
+            className={`${styles.countdownBtn} ${styles.incrementBtn}`}
+            onClick={() => dispatch(incrementCountdownTimer())}
           >
-            -
+            +
           </button>
         </div>
       </div>
