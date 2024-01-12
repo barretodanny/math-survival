@@ -10,7 +10,11 @@ import {
   toggleAutoSave,
   toggleDarkMode,
 } from "../../features/settings/settings-slice";
+
 import Modal from "./Modal";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+
+import styles from "./Modal.module.css";
 
 function SettingsModal() {
   const dispatch = useAppDispatch();
@@ -21,34 +25,52 @@ function SettingsModal() {
 
   return (
     <Modal>
-      <span>Settings</span>
-      <div>
-        <p>Darkmode: {darkMode ? "On" : "Off"}</p>
-        <button onClick={() => dispatch(toggleDarkMode())}>
-          Toggle Darkmode
-        </button>
-      </div>
-      <div>
-        <p>Default Username:</p>
-        <input
-          type="text"
-          value={defaultUsername}
-          onChange={(e) => dispatch(setDefaultUsername(e.target.value))}
-        />
-      </div>
-      <div>
-        <p>Auto Save: {autoSave ? "On" : "Off"}</p>
-        <button onClick={() => dispatch(toggleAutoSave())}>
-          Toggle Autosave
-        </button>
-      </div>
-      <div>
-        <p>Countdown Timer:</p>
-        <span>
-          <button onClick={() => dispatch(incrementCountdownTimer())}>+</button>{" "}
-          {countdownTimer}{" "}
-          <button onClick={() => dispatch(decrementCountdownTimer())}>-</button>
-        </span>
+      <div className={styles.content}>
+        <h3 className={`${styles.modalHeading} ${styles.centerText}`}>
+          Settings
+        </h3>
+        <div className={styles.settingOption}>
+          <p>Dark mode</p>
+          <ToggleSwitch
+            on={darkMode}
+            toggle={() => dispatch(toggleDarkMode())}
+          />
+        </div>
+        <div className={styles.settingOption}>
+          <p>Default Username</p>
+          <input
+            className={styles.settingTextInput}
+            type="text"
+            value={defaultUsername}
+            onChange={(e) => dispatch(setDefaultUsername(e.target.value))}
+          />
+        </div>
+        <div className={styles.settingOption}>
+          <p>Auto Save</p>
+          <ToggleSwitch
+            on={autoSave}
+            toggle={() => dispatch(toggleAutoSave())}
+          />
+        </div>
+        <div className={styles.settingOption}>
+          <p>Countdown Timer</p>
+
+          <button
+            className={`${styles.countdownBtn} ${styles.incrementBtn}`}
+            onClick={() => dispatch(incrementCountdownTimer())}
+          >
+            +
+          </button>
+          {"  "}
+          {countdownTimer}
+          {"  "}
+          <button
+            className={`${styles.countdownBtn} ${styles.decrementBtn}`}
+            onClick={() => dispatch(decrementCountdownTimer())}
+          >
+            -
+          </button>
+        </div>
       </div>
     </Modal>
   );
