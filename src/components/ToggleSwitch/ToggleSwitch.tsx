@@ -9,7 +9,6 @@ interface ToggleSwitchProps {
 }
 
 function ToggleSwitch({ on, toggle }: ToggleSwitchProps) {
-  console.log(on);
   return (
     <div
       className={`${styles.container} ${on ? `${styles.on}` : ""}`}

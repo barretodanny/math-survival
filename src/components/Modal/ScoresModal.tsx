@@ -18,7 +18,6 @@ function ScoresModal() {
   const gameString = generateGameString(mathMode, difficulty);
   const scoresString = localStorage.getItem(gameString) || "";
   const scores: Score[] = parseScores(scoresString);
-  console.log(scores);
 
   return (
     <Modal>

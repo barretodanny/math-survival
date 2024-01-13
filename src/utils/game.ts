@@ -63,7 +63,6 @@ export function shouldIncrementMinMax(
     case MathModeOptions.ADDITION:
       switch (difficulty) {
         case DifficultyOptions.EASY:
-          console.log("first");
           return score % ADDITION_EASY_INCREMENT_INTERVAL === 0;
         case DifficultyOptions.NORMAL:
           return score % ADDITION_NORMAL_INCREMENT_INTERVAL === 0;
