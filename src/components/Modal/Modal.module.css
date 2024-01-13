@@ -101,6 +101,13 @@
 .settingTextInput {
   outline: none;
   padding: 6px;
+  border: 1px solid black;
+}
+
+.settingTextInputDark {
+  background-color: rgb(28, 28, 28);
+  color: rgb(235, 235, 235);
+  border: 1px solid white;
 }
 
 .countdownBtn {
@@ -111,18 +118,34 @@
   cursor: pointer;
 }
 
-.incrementBtn {
+.incrementBtnLight {
   background-color: lightgreen;
 }
 
-.incrementBtn:hover {
+.incrementBtnLight:hover {
   background-color: rgb(95, 235, 95);
 }
 
-.decrementBtn {
+.incrementBtnDark {
+  background-color: rgb(95, 235, 95);
+}
+
+.incrementBtnDark:hover {
+  background-color: lightgreen;
+}
+
+.decrementBtnLight {
   background-color: lightcoral;
 }
 
-.decrementBtn:hover {
+.decrementBtnLight:hover {
   background-color: rgb(235, 93, 93);
+}
+
+.decrementBtnDark {
+  background-color: rgb(235, 93, 93);
+}
+
+.decrementBtnDark:hover {
+  background-color: lightcoral;
 }

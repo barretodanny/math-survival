@@ -39,7 +39,9 @@ function SettingsModal() {
         <div className={styles.settingOption}>
           <p>Default Username</p>
           <input
-            className={styles.settingTextInput}
+            className={`${styles.settingTextInput} ${
+              darkMode ? `${styles.settingTextInputDark}` : ""
+            }`}
             type="text"
             value={defaultUsername}
             onChange={(e) => dispatch(setDefaultUsername(e.target.value))}
@@ -56,7 +58,11 @@ function SettingsModal() {
           <p>Countdown Timer</p>
 
           <button
-            className={`${styles.countdownBtn} ${styles.decrementBtn}`}
+            className={`${styles.countdownBtn} ${styles.decrementBtn} ${
+              darkMode
+                ? `${styles.decrementBtnDark}`
+                : `${styles.decrementBtnLight}`
+            }`}
             onClick={() => dispatch(decrementCountdownTimer())}
           >
             -
@@ -65,7 +71,11 @@ function SettingsModal() {
           {countdownTimer}
           {"  "}
           <button
-            className={`${styles.countdownBtn} ${styles.incrementBtn}`}
+            className={`${styles.countdownBtn} ${styles.incrementBtn} ${
+              darkMode
+                ? `${styles.incrementBtnDark}`
+                : `${styles.incrementBtnLight}`
+            }`}
             onClick={() => dispatch(incrementCountdownTimer())}
           >
             +
