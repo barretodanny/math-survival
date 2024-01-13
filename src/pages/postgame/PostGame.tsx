@@ -7,13 +7,17 @@ import {
 } from "../../features/game/game-slice";
 import {
   selectAutoSaveSetting,
+  selectDarkModeSetting,
   selectDefaultUsername,
 } from "../../features/settings/settings-slice";
 import { showSetupScreen } from "../../features/ui/ui-slice";
 import { generateGameString } from "../../utils/scores";
 
+import styles from "./PostGame.module.css";
+
 function PostGame() {
   const dispatch = useAppDispatch();
+  const darkMode = useAppSelector(selectDarkModeSetting);
   const difficulty = useAppSelector(selectDifficultyOption);
   const mathMode = useAppSelector(selectMathModeOption);
   const score = useAppSelector(selectGameScore);
@@ -42,40 +46,64 @@ function PostGame() {
   }, [autoSave]);
 
   return (
-    <div>
-      <h2>PostGame</h2>
-      <h4>You survived {score + 60} seconds</h4>
-      <h4>Final score: {score}</h4>
+    <div
+      className={`${styles.container} ${
+        darkMode ? `${styles.containerDark}` : `${styles.containerLight}`
+      }`}
+    >
+      <h4 className={`${styles.heading} ${styles.center}`}>
+        You survived {score + 60} seconds
+      </h4>
+      <h4 className={`${styles.heading2} ${styles.center}`}>
+        Final score: {score}
+      </h4>
       {autoSave ? (
-        <>
+        <div>
           {/* TODO implement auto save */}
-          <p>
-            Score has been automatically saved under username {defaultUsername}
+          <p className={styles.center}>
+            Score has been automatically saved under username{" "}
+            <strong>{defaultUsername}</strong>
           </p>
-          <p>You can change this in the settings.</p>
-        </>
+          <p className={styles.center}>You can change this in the settings.</p>
+        </div>
       ) : (
         <>
           {saved ? (
-            <>
-              <p>Score saved</p>
-            </>
+            <p className={styles.center}>Score saved</p>
           ) : (
-            <>
-              <p>Would you like to save this score?</p>
+            <div className={styles.saveContainer}>
+              <p className={styles.center}>
+                Would you like to save this score?
+              </p>
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                className={`${styles.usernameTextInput} ${
+                  darkMode ? `${styles.usernameTextInputDark}` : ""
+                }`}
               />
-              <br />
-              <button onClick={saveScore}>Save</button>
-            </>
+              <button
+                onClick={saveScore}
+                className={`${styles.saveBtn} ${
+                  darkMode ? `${styles.saveBtnDark}` : `${styles.saveBtnLight}`
+                }`}
+              >
+                Save
+              </button>
+            </div>
           )}
         </>
       )}
       <br />
-      <button onClick={() => dispatch(showSetupScreen())}>Play Again</button>
+      <button
+        onClick={() => dispatch(showSetupScreen())}
+        className={`${styles.playBtn} ${
+          darkMode ? `${styles.playBtnDark}` : `${styles.playBtnLight}`
+        }`}
+      >
+        Play Again
+      </button>
     </div>
   );
 }
