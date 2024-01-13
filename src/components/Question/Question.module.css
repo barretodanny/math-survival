@@ -5,17 +5,32 @@
   justify-content: center;
   gap: 35px;
   align-items: center;
-  border: 3px solid black;
   border-radius: 8px;
   max-height: 220px;
   height: 18%;
   width: 80%;
-  background-color: #f8f8f8;
 }
 
-.current {
+.questionLight {
+  border: 3px solid black;
+  background-color: #f8f8f8;
+  color: black;
+}
+
+.questionDark {
+  border: 3px solid white;
+  background-color: rgb(24, 24, 24);
+  color: white;
+}
+
+.currentQuestionLight {
+  border: 3px solid rgb(47, 108, 238);
   background-color: #d7d7d7;
-  border-color: rgb(224, 111, 6);
+}
+
+.currentQuestionDark {
+  border: 3px solid rgb(47, 108, 238);
+  background-color: rgb(3, 3, 3);
 }
 
 .question {
@@ -26,7 +41,18 @@
   width: 80%;
   padding: 6px;
   border-radius: 4px;
+}
+
+.answerInputLight {
+  background-color: white;
   border: 1px solid black;
+  color: black;
+}
+
+.answerInputDark {
+  background-color: rgb(20, 20, 20);
+  color: rgb(235, 235, 235);
+  border: 1px solid white;
 }
 
 @media only screen and (max-height: 700px) {

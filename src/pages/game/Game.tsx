@@ -11,6 +11,7 @@ import {
   selectGameUserAnswer,
 } from "../../features/game/game-slice";
 import { showPostGameScreen } from "../../features/ui/ui-slice";
+import { selectDarkModeSetting } from "../../features/settings/settings-slice";
 
 import GameInfoBar from "../../components/GameInfoBar/GameInfoBar";
 import QuestionsSlider from "../../components/QuestionsSlider/QuestionsSlider";
@@ -19,6 +20,7 @@ import styles from "./Game.module.css";
 
 function Game() {
   const dispatch = useAppDispatch();
+  const darkMode = useAppSelector(selectDarkModeSetting);
   const timer = useAppSelector(selectGameTimer);
   const score = useAppSelector(selectGameScore);
   const min = useAppSelector(selectGameMin);
@@ -45,7 +47,11 @@ function Game() {
   }, [timer]);
 
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${
+        darkMode ? `${styles.containerDark}` : `${styles.containerLight}`
+      }`}
+    >
       <GameInfoBar timer={timer} score={score} min={min} max={max} />
       <QuestionsSlider
         currentQuestion={currentQuestion}
