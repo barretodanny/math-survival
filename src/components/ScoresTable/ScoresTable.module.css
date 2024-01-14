@@ -1,0 +1,127 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 15px;
+  width: 100%;
+  max-height: 400px;
+  height: 100%;
+  color: white;
+}
+
+.text {
+  text-align: center;
+}
+
+.lightText {
+  color: black;
+}
+
+.darkText {
+  color: white;
+}
+
+.tableContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 98%;
+  border-radius: 4px;
+  overflow-x: hidden;
+}
+
+.lightBorder {
+  border-bottom: 1px solid black;
+}
+
+.darkBorder {
+  border: 1px solid white;
+}
+
+.lightBorder2 {
+  border: 2px solid black;
+}
+
+.darkBorder2 {
+  border: 2px solid white;
+}
+
+.top {
+  display: flex;
+  width: 100%;
+  height: 12%;
+}
+
+.topItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.topItemLight {
+  background-color: rgb(188, 216, 248);
+  color: black;
+}
+
+.topItemLight:hover {
+  background-color: rgb(130, 185, 248);
+}
+
+.topItemDark {
+  background-color: black;
+}
+
+.topItemDark:hover {
+  background-color: rgb(26, 26, 26);
+}
+
+.topItemSelectedLight {
+  background-color: rgb(34, 84, 206);
+}
+
+.topItemSelectedLight:hover {
+  background-color: rgb(34, 54, 186);
+}
+
+.topItemSelectedDark {
+  background-color: rgb(35, 152, 230);
+}
+
+.topItemSelectedDark:hover {
+  background-color: rgb(74, 171, 235);
+}
+
+.divider {
+  height: 100%;
+  width: 1px;
+}
+
+.darkDivider {
+  background-color: white;
+}
+
+.lightDivider {
+  background-color: black;
+}
+
+.topFirst,
+.scoreFirst {
+  width: 40%;
+}
+
+.topSecond,
+.scoreSecond {
+  width: 20%;
+}
+
+.topThird,
+.scoreThird {
+  width: 40%;
+  border-right: 1px solid black;
+}
+
+.scoresContainer {
+  height: 88%;
+}
