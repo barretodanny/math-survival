@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { QuestionType } from "../../types/game";
 import { updateUserAnswer } from "../../features/game/game-slice";
 import { selectDarkModeSetting } from "../../features/settings/settings-slice";
-import { QuestionType } from "../../types/game";
 
 import styles from "./Question.module.css";
 

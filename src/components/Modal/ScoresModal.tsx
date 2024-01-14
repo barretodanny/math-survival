@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { useAppSelector } from "../../app/hooks";
+import { generateGameString, parseScores } from "../../utils/scores";
+import { DifficultyOptions, MathModeOptions } from "../../constants/game";
+import { Score } from "../../types/scores";
+import { selectDarkModeSetting } from "../../features/settings/settings-slice";
 import {
   selectDifficultyOption,
   selectMathModeOption,
 } from "../../features/game/game-slice";
-import { selectDarkModeSetting } from "../../features/settings/settings-slice";
+
 import Modal from "./Modal";
 import ScoresTable from "../ScoresTable/ScoresTable";
-import { DifficultyOptions, MathModeOptions } from "../../constants/game";
-import { generateGameString, parseScores } from "../../utils/scores";
-import { Score } from "../../types/scores";
 
 import styles from "./Modal.module.css";
 

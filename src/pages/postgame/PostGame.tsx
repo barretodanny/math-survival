@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { generateGameString } from "../../utils/scores";
+import { showSetupScreen } from "../../features/ui/ui-slice";
 import {
   selectDifficultyOption,
   selectGameScore,
@@ -10,8 +12,6 @@ import {
   selectDarkModeSetting,
   selectDefaultUsername,
 } from "../../features/settings/settings-slice";
-import { showSetupScreen } from "../../features/ui/ui-slice";
-import { generateGameString } from "../../utils/scores";
 
 import styles from "./PostGame.module.css";
 

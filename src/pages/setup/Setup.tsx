@@ -1,5 +1,7 @@
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { UIModalState } from "../../constants/ui";
+import { DifficultyOptions, MathModeOptions } from "../../constants/game";
+import { selectDarkModeSetting } from "../../features/settings/settings-slice";
 import {
   selectUIModal,
   showCountdownScreen,
@@ -23,8 +25,6 @@ import SettingsModal from "../../components/Modal/SettingsModal";
 import HowToPlayModal from "../../components/Modal/HowToPlayModal";
 
 import styles from "./Setup.module.css";
-import { DifficultyOptions, MathModeOptions } from "../../constants/game";
-import { selectDarkModeSetting } from "../../features/settings/settings-slice";
 
 function Setup() {
   const darkMode = useAppSelector(selectDarkModeSetting);

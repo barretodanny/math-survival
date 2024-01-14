@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { useAppSelector } from "../../app/hooks";
+import { sortScores } from "../../utils/scores";
 import { Score } from "../../types/scores";
 import { ScoresSortOrder } from "../../constants/scores";
-import { useAppSelector } from "../../app/hooks";
 import { selectDarkModeSetting } from "../../features/settings/settings-slice";
-import { sortScores } from "../../utils/scores";
+
 import ScoreItem from "../ScoreItem/ScoreItem";
 import Up from "../../svg/up.svg";
 import Down from "../../svg/down.svg";

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { showPostGameScreen } from "../../features/ui/ui-slice";
+import { selectDarkModeSetting } from "../../features/settings/settings-slice";
 import {
   decrementGameTimer,
   selectGameCurrentQuestion,
@@ -10,8 +12,6 @@ import {
   selectGameTimer,
   selectGameUserAnswer,
 } from "../../features/game/game-slice";
-import { showPostGameScreen } from "../../features/ui/ui-slice";
-import { selectDarkModeSetting } from "../../features/settings/settings-slice";
 
 import GameInfoBar from "../../components/GameInfoBar/GameInfoBar";
 import QuestionsSlider from "../../components/QuestionsSlider/QuestionsSlider";

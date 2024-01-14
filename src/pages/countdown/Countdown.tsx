@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { showGameScreen } from "../../features/ui/ui-slice";
+import { reset } from "../../features/game/game-slice";
 import {
   selectCountdownTimer,
   selectDarkModeSetting,
 } from "../../features/settings/settings-slice";
-import { showGameScreen } from "../../features/ui/ui-slice";
-import { reset } from "../../features/game/game-slice";
 
 import styles from "./Countdown.module.css";
 

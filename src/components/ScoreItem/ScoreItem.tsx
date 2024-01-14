@@ -1,7 +1,7 @@
 import { useAppSelector } from "../../app/hooks";
-import { selectDarkModeSetting } from "../../features/settings/settings-slice";
-import { Score } from "../../types/scores";
 import { getTimeAgo } from "../../utils/scores";
+import { Score } from "../../types/scores";
+import { selectDarkModeSetting } from "../../features/settings/settings-slice";
 
 import styles from "./ScoreItem.module.css";
 

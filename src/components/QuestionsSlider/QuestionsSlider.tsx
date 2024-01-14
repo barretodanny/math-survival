@@ -1,6 +1,6 @@
 import { useAppSelector } from "../../app/hooks";
-import { selectGameScore } from "../../features/game/game-slice";
 import { QuestionType } from "../../types/game";
+import { selectGameScore } from "../../features/game/game-slice";
 
 import Question from "../Question/Question";
 
