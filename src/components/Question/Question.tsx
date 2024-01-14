@@ -8,7 +8,7 @@ import styles from "./Question.module.css";
 interface QuestionProps {
   question: QuestionType | undefined;
   current?: boolean;
-  userAnswer?: string;
+  userAnswer: string;
 }
 
 function Question({ question, current, userAnswer }: QuestionProps) {
