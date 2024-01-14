@@ -1,0 +1,52 @@
+.scoreContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  display: flex;
+  width: 100%;
+}
+
+.lightContainer {
+  border-bottom: 1px solid black;
+  color: black;
+}
+
+.darkContainer {
+  border-bottom: 1px solid white;
+}
+
+.scoreFirst {
+  width: 40%;
+}
+
+.scoreSecond {
+  width: 20%;
+}
+
+.scoreThird {
+  width: 40%;
+  height: 100%;
+  border-right: 1px solid black;
+}
+
+.scoreFirst,
+.scoreSecond,
+.scoreThird {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divider {
+  height: 100%;
+  width: 1px;
+}
+
+.darkDivider {
+  background-color: white;
+}
+
+.lightDivider {
+  background-color: black;
+}
