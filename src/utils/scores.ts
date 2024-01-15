@@ -2,6 +2,9 @@ import { DifficultyOptions, MathModeOptions } from "../constants/game";
 import { ScoresSortOrder } from "../constants/scores";
 import { Score } from "../types/scores";
 
+// game string is used for saving scores for each mathmode/difficulty combination
+// represents the math mode (A/S/M for Addition/Subtraction/Multiplication)
+// and represents difficulty (E/N/H for Easy/Normal/Hard)
 export function generateGameString(
   mathMode: MathModeOptions,
   difficulty: DifficultyOptions
@@ -35,14 +38,22 @@ export function generateGameString(
   return gameString;
 }
 
+// a score is saved in the following form:
+// USERNAME_SCORE_DATE
+// scores are saving as a string, with each score separated by a comma
+// SCORE,SCORE,SCORE
 export function parseScores(scoresString: string): Score[] {
+  // no score saved
   if (!scoresString) {
     return [];
   }
 
+  // for score id to pass as key in ScoreItem
   let i = 0;
 
+  // if score string does not contain a comma there is only 1 score, otherwise multiple scores
   if (!scoresString.includes(",")) {
+    // score form: USERNAME_SCORE_DATE
     const s = scoresString.split("_");
     const score: Score = {
       username: s[0],
@@ -53,7 +64,9 @@ export function parseScores(scoresString: string): Score[] {
     return [score];
   } else {
     const scores: Score[] = [];
+    // score string form: SCORE,SCORE,SCORE...
     scoresString.split(",").map((ss) => {
+      // score form: USERNAME_SCORE_DATE
       const s = ss.split("_");
       const score: Score = {
         username: s[0],
@@ -93,14 +106,17 @@ export function getTimeAgo(createdAt: string) {
 
 export const sortScores = (sort: ScoresSortOrder, scores: Score[]) => {
   switch (sort) {
+    // ascending 0-9 A-Z
     case ScoresSortOrder.USERNAME:
       return sortScoresByUsername(scores, true);
     case ScoresSortOrder.USERNAME_REVERSE:
       return sortScoresByUsername(scores, false);
+    // ascending 0,1,2...
     case ScoresSortOrder.SCORE:
       return sortScoresByScore(scores, false);
     case ScoresSortOrder.SCORE_REVERSE:
       return sortScoresByScore(scores, true);
+    // earliest to latest
     case ScoresSortOrder.DATE:
       return sortScoresByDate(scores, false);
     case ScoresSortOrder.DATE_REVERSE:

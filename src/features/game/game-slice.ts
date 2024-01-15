@@ -42,6 +42,7 @@ export const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
+    // reset game state such as timer, score, min/max, etc to default values
     reset: (state) => {
       (state.gameTimer = INITIAL_GAME_TIMER),
         (state.score = 0),
@@ -91,11 +92,13 @@ export const gameSlice = createSlice({
       state.gameTimer -= 1;
     },
     updateUserAnswer: (state, action: PayloadAction<string>) => {
+      // correct answer, increment score/timer and reset user answer
       if (state.currentQuestion!.answer === parseInt(action.payload)) {
         state.score += 1;
         state.gameTimer += 1;
-        state.userAnswer = undefined;
+        state.userAnswer = "";
 
+        // min/max increments based on score and also mathmode/difficulty
         if (
           shouldIncrementMinMax(state.mathMode, state.difficulty, state.score)
         ) {

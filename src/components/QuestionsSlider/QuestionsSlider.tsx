@@ -25,11 +25,11 @@ function QuestionsSlider({
         key={score}
         question={currentQuestion}
         current={true}
-        userAnswer={userAnswer}
+        userAnswer={userAnswer ? userAnswer : ""}
       />
-      <Question key={score + 1} question={nextQuestions![0]} />
-      <Question key={score + 2} question={nextQuestions![1]} />
-      <Question key={score + 3} question={nextQuestions![2]} />
+      <Question key={score + 1} question={nextQuestions![0]} userAnswer={""} />
+      <Question key={score + 2} question={nextQuestions![1]} userAnswer={""} />
+      <Question key={score + 3} question={nextQuestions![2]} userAnswer={""} />
     </div>
   );
 }

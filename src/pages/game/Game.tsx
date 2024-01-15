@@ -31,6 +31,7 @@ function Game() {
   const [flash, setFlash] = useState(false);
 
   useEffect(() => {
+    // count down timer every second
     const itv = setInterval(() => {
       dispatch(decrementGameTimer());
     }, 1000);
@@ -41,6 +42,7 @@ function Game() {
   }, []);
 
   useEffect(() => {
+    // game ends when timer reaches 0
     if (timer <= 0) {
       dispatch(showPostGameScreen());
     }
@@ -51,6 +53,7 @@ function Game() {
       return;
     }
 
+    // screen flashes green every time a question is answered correctly for 450ms
     setFlash(true);
 
     const timeoutId = setTimeout(() => {

@@ -12,6 +12,7 @@ import {
   SUBTRACTION_NORMAL_INCREMENT_INTERVAL,
 } from "../constants/game";
 
+// get random between min/max (inclusive)
 function getRandomInt(min: number, max: number) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -42,6 +43,7 @@ function getAnswer(n1: number, n2: number, mm: MathModeOptions) {
   }
 }
 
+// generate a question with operands falling in min/max range, and sign depending on mathmode
 export function generateQuestion(
   mm: MathModeOptions,
   min: number,
@@ -59,6 +61,8 @@ export function shouldIncrementMinMax(
   difficulty: DifficultyOptions,
   score: number
 ) {
+  // addition/subtraction/multiplication all have different min/max increment timings
+  // difficulty also determines how often min/max will increment
   switch (mathMode) {
     case MathModeOptions.ADDITION:
       switch (difficulty) {

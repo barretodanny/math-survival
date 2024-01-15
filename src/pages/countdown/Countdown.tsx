@@ -16,9 +16,10 @@ function Countdown() {
   const [timer, setTimer] = useState(countdownTimer);
 
   useEffect(() => {
-    // reset game state
+    // reset any previous game state
     dispatch(reset());
 
+    // countdown to game start
     const itv = setInterval(() => {
       setTimer((prev) => prev - 1);
     }, 1000);

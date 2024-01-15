@@ -28,10 +28,11 @@ function PostGame() {
 
   function saveScore() {
     const gameString = generateGameString(mathMode, difficulty);
-    const date = new Date().toISOString();
+    const date = new Date().toISOString(); // current date
     const scoreString = `${username}_${score}_${date}`;
     const savedScores = localStorage.getItem(gameString);
 
+    // if saved scores, append scoreString, otherwise set as scoreString
     savedScores
       ? localStorage.setItem(gameString, `${savedScores},${scoreString}`)
       : localStorage.setItem(gameString, `${scoreString}`);
@@ -59,7 +60,6 @@ function PostGame() {
       </h4>
       {autoSave ? (
         <div>
-          {/* TODO implement auto save */}
           <p className={styles.center}>
             Score has been automatically saved under username{" "}
             <strong>{defaultUsername}</strong>

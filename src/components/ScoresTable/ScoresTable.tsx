@@ -23,6 +23,7 @@ function ScoresTable({ fetchedScores }: ScoresTableProps) {
   const [scores, setScores] = useState(fetchedScores);
 
   useEffect(() => {
+    // sort the scores any time the sort order is changed or new scores have been fetched
     setScores([...sortScores(sortOrder, fetchedScores)]);
   }, [sortOrder, fetchedScores]);
 
