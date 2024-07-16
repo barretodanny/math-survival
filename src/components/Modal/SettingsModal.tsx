@@ -6,9 +6,11 @@ import {
   selectCountdownTimer,
   selectDarkModeSetting,
   selectDefaultUsername,
+  selectFlashEnabledSetting,
   setDefaultUsername,
   toggleAutoSave,
   toggleDarkMode,
+  toggleFlash,
 } from "../../features/settings/settings-slice";
 
 import Modal from "./Modal";
@@ -22,6 +24,7 @@ function SettingsModal() {
   const defaultUsername = useAppSelector(selectDefaultUsername);
   const autoSave = useAppSelector(selectAutoSaveSetting);
   const countdownTimer = useAppSelector(selectCountdownTimer);
+  const flashEnabled = useAppSelector(selectFlashEnabledSetting);
 
   return (
     <Modal>
@@ -34,6 +37,13 @@ function SettingsModal() {
           <ToggleSwitch
             on={darkMode}
             toggle={() => dispatch(toggleDarkMode())}
+          />
+        </div>
+        <div className={styles.settingOption}>
+          <p>Background Flash</p>
+          <ToggleSwitch
+            on={flashEnabled}
+            toggle={() => dispatch(toggleFlash())}
           />
         </div>
         <div className={styles.settingOption}>

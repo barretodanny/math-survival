@@ -9,6 +9,7 @@ import settingsReducer, {
   incrementCountdownTimer,
   decrementCountdownTimer,
   SettingsOptions,
+  toggleFlash,
 } from "./settings-slice";
 
 describe("settings reducer", () => {
@@ -17,6 +18,7 @@ describe("settings reducer", () => {
     defaultUsername: "username",
     autoSave: false,
     countdownTimer: 3,
+    flashEnabled: true,
   };
 
   it("should handle initial state", () => {
@@ -25,6 +27,7 @@ describe("settings reducer", () => {
       defaultUsername: "username",
       autoSave: false,
       countdownTimer: 3,
+      flashEnabled: true,
     });
   });
 
@@ -35,6 +38,15 @@ describe("settings reducer", () => {
     actual = settingsReducer(actual, toggleDarkMode());
     expect(actual.darkMode).toEqual(false);
     expect(localStorage.getItem("darkMode")).toEqual("false");
+  });
+
+  it("should handle flash enabled toggle and saving to local storage", () => {
+    let actual = settingsReducer(initialState, toggleFlash());
+    expect(actual.flashEnabled).toEqual(false);
+    expect(localStorage.getItem("flashEnabled")).toEqual("false");
+    actual = settingsReducer(actual, toggleFlash());
+    expect(actual.flashEnabled).toEqual(true);
+    expect(localStorage.getItem("flashEnabled")).toEqual("true");
   });
 
   it("should handle setting the default username", () => {

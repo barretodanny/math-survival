@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { showPostGameScreen } from "../../features/ui/ui-slice";
-import { selectDarkModeSetting } from "../../features/settings/settings-slice";
+import {
+  selectDarkModeSetting,
+  selectFlashEnabledSetting,
+} from "../../features/settings/settings-slice";
 import {
   decrementGameTimer,
   selectGameCurrentQuestion,
@@ -28,6 +31,7 @@ function Game() {
   const currentQuestion = useAppSelector(selectGameCurrentQuestion);
   const userAnswer = useAppSelector(selectGameUserAnswer);
   const nextQuestions = useAppSelector(selectGameNextQuestions);
+  const flashEnabled = useAppSelector(selectFlashEnabledSetting);
   const [flash, setFlash] = useState(false);
 
   useEffect(() => {
@@ -54,7 +58,7 @@ function Game() {
     }
 
     // screen flashes green every time a question is answered correctly for 450ms
-    setFlash(true);
+    setFlash(flashEnabled && true);
 
     const timeoutId = setTimeout(() => {
       setFlash(false);

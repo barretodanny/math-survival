@@ -11,6 +11,7 @@ export interface SettingsOptions {
   defaultUsername: string;
   autoSave: boolean;
   countdownTimer: number;
+  flashEnabled: boolean;
 }
 
 function parseCountdownTimer(countdownTimer: string | null) {
@@ -42,12 +43,19 @@ function initializeState() {
   const defaultUsername = localStorage.getItem("defaultUsername");
   const autoSave = localStorage.getItem("autoSave");
   const countdownTimer = localStorage.getItem("countdownTimer");
+  const flashEnabled = localStorage.getItem("flashEnabled");
 
   const state = {
     darkMode: darkMode ? (darkMode === "true" ? true : false) : false,
     defaultUsername: defaultUsername ? defaultUsername : "username",
     autoSave: autoSave ? (autoSave === "true" ? true : false) : false,
     countdownTimer: parseCountdownTimer(countdownTimer),
+    // by default flash is enabled, unless this setting has been turned off
+    flashEnabled: flashEnabled
+      ? flashEnabled === "false"
+        ? false
+        : true
+      : true,
   };
 
   return state;
@@ -85,6 +93,13 @@ export const settingsSlice = createSlice({
       state.countdownTimer -= 1;
       localStorage.setItem("countdownTimer", String(state.countdownTimer));
     },
+    toggleFlash: (state) => {
+      state.flashEnabled = !state.flashEnabled;
+      localStorage.setItem(
+        "flashEnabled",
+        state.flashEnabled ? "true" : "false"
+      );
+    },
   },
 });
 
@@ -94,6 +109,7 @@ export const {
   toggleAutoSave,
   incrementCountdownTimer,
   decrementCountdownTimer,
+  toggleFlash,
 } = settingsSlice.actions;
 
 export const selectDarkModeSetting = (state: RootState) =>
@@ -104,5 +120,7 @@ export const selectAutoSaveSetting = (state: RootState) =>
   state.settings.autoSave;
 export const selectCountdownTimer = (state: RootState) =>
   state.settings.countdownTimer;
+export const selectFlashEnabledSetting = (state: RootState) =>
+  state.settings.flashEnabled;
 
 export default settingsSlice.reducer;
