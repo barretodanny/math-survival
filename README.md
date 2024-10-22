@@ -1,27 +1,33 @@
-# vite-template-redux
+# Math Survival
 
-Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
+A fun math survival game. You start with 60 seconds, and each question you answer will add an additional second to the timer. The game ends when you run out of time. The questions become more difficult as you answer more questions.
 
-```sh
-npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
-```
+## Addition
 
-## Goals
+The operands initially fall in a range from `0` to `20`. Ex: `5` + `7`. The minimum and maximum values will increase as you answer more questions based on the difficulty selected.
 
-- Easy migration from Create React App or Vite
-- As beginner friendly as Create React App
-- Optimized performance compared to Create React App
-- Customizable without ejecting
+**Easy**: every `10` questions
 
-## Scripts
+**Normal**: every `8` questions
 
-- `dev`/`start` - start dev server and open browser
-- `build` - build for production
-- `preview` - locally preview production build
-- `test` - launch test runner
+**Hard**: every `6` questions
 
-## Inspiration
+## Subtraction
 
-- [Create React App](https://github.com/facebook/create-react-app/tree/main/packages/cra-template)
-- [Vite](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react)
-- [Vitest](https://github.com/vitest-dev/vitest/tree/main/examples/react-testing-lib)
+The operands initially fall in a range from `0` to `15`. Ex: `8` - `4`. The minimum and maximum values will increase as you answer more questions based on the difficulty selected.
+
+**Easy**: every `14` questions
+
+**Normal**: every `11` questions
+
+**Hard**: every `8` questions
+
+## Multiplication
+
+The operands initially fall in a range from `0` to `5`. Ex: `2` x `4`. The minimum and maximum values will increase as you answer more questions based on the difficulty selected.
+
+**Easy**: every `20` questions
+
+**Normal**: every `17` questions
+
+**Hard**: every `14` questions
