@@ -1,5 +1,7 @@
 # Math Survival
 
+[Play Math Survival Here](https://dannbarr.dev/app/mathsurvival/)
+
 A fun math survival game. You start with 60 seconds, and each question you answer will add an additional second to the timer. The game ends when you run out of time. The questions become more difficult as you answer more questions.
 
 ## Addition
