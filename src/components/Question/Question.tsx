@@ -32,7 +32,9 @@ function Question({ question, current, userAnswer }: QuestionProps) {
       </span>
       {current && (
         <input
-          type="text"
+          type="number"
+          inputMode="numeric"
+          pattern={"[0-9]*"}
           value={userAnswer}
           onChange={(e) => dispatch(updateUserAnswer(e.target.value))}
           autoFocus
